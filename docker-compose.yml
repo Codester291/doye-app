@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  doye:
+    container_name: doye-server
+    image: doye
+    restart: always
+    build: .
+    ports:
+      - 8991:8991
+    depends_on:
+      - mysqldb
+  db:
+    container_name: mysqldb
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=tolani_doye
+      - MYSQL_DATABASE=astra_db
+networks:
+  default:
+    name: doye-network

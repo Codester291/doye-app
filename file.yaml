@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-10-15T10:56:23Z"
+  generateName: doye-pod-6c8f55b59-
+  labels:
+    app: doye-pod
+    pod-template-hash: 6c8f55b59
+  name: doye-pod-6c8f55b59-srjwv
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: doye-pod-6c8f55b59
+    uid: afcce183-bdef-43de-839c-c0b64cbd856c
+  resourceVersion: "10734"
+  uid: c281a115-5a55-47ed-9715-a53186b505fc
+spec:
+  containers:
+  - image: tolani98/doye:1.0
+    imagePullPolicy: IfNotPresent
+    name: doye
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-np54z
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-np54z
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-15T10:56:23Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-15T10:56:25Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-15T10:56:25Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-15T10:56:23Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://290a498a8b8ede9c7bd03a4a1260d0631cccb89d77791f4379bcde91ab707d0c
+    image: tolani98/doye:1.0
+    imageID: docker-pullable://tolani98/doye@sha256:c4f72b73ca36f076c583543392179224b846d7b44ae69e082f96e505465f3622
+    lastState: {}
+    name: doye
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-10-15T10:56:25Z"
+  hostIP: 192.168.49.2
+  phase: Running
+  podIP: 172.17.0.4
+  podIPs:
+  - ip: 172.17.0.4
+  qosClass: BestEffort
+  startTime: "2022-10-15T10:56:23Z"

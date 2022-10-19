@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: doye-service
+spec:
+  selector:
+    app:  doye-pod
+  type:  NodePort
+  ports:
+    - port:  8991
+      targetPort:  8991

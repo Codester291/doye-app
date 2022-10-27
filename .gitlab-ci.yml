@@ -1,0 +1,8 @@
+build:
+    image: alpine
+    script:
+        - echo "Hi, I'm Doye, I would be known all over the earth in coming years"
+        - mkdir test-lab
+        - touch test-lab/comps.txt
+        - echo "Hi, I'm Doye, I would be known all over the earth in coming years" >> test-lab/comps.txt
+        - cat test-lab/comps.txt
